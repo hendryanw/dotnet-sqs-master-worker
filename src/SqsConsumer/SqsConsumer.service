@@ -1,0 +1,14 @@
+[Unit]
+Description=SQS Consumer
+
+[Service]
+WorkingDirectory=/home/ec2-user/consumer
+ExecStart=/usr/bin/dotnet /home/ec2-user/consumer/SqsConsumer.dll
+Restart=always
+# Restart service after 10 seconds if the dotnet service crashes:
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=SqsConsumer
+
+[Install]
+WantedBy=multi-user.target
